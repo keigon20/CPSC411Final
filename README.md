@@ -15,7 +15,9 @@ CRUD Operations:
 - Read: View a list of all past rounds and see the details of each one.
 - Update: Edit the course name and score of existing rounds.
 - Delete: Remove rounds from the list (with a confirmation dialog).
+
 Modern UI: Built entirely with Jetpack Compose, using Material 3 design components.
+
 Reactive Data Layer: Uses Kotlin Flows and Firestore real-time listeners to ensure the UI is always up-to-date.
 
 Screens:
