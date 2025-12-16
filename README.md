@@ -1,6 +1,7 @@
 Golf Rounds Tracker
 
 Solo project
+
 Keigo Noguchi 885486746
 
 This app keeps tracks of rounds of golf played by users. Users can enter the name of the course they played and their score. This app makes it easy for users to keep track of the rounds they've played.
@@ -37,7 +38,11 @@ Firebase SetupTo run this project, you need to connect it to your own Firebase p
 - Under the "Sign-in method" tab, enable the Email/Password provider.
 
 Local Setup
+
 1.Clone this repository.
+
 2.Open the project in Android Studio.
+
 3.Complete the Firebase Setup steps described above.
+
 4.Let Android Studio sync the Gradle files.5.Build and run the app on an emulator or a physical device.
