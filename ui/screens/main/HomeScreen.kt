@@ -21,6 +21,5 @@ fun HomeScreen(onNavigateToList: () -> Unit, authViewModel: AuthViewModel) {
         }
         Spacer(Modifier.height(12.dp))
         Button(onClick = onNavigateToList) { Text("My Items") }
-        // ... other dashboard content
     }
 }

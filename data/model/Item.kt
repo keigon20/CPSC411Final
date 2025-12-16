@@ -6,9 +6,9 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 @IgnoreExtraProperties
 data class Item(
     @DocumentId
-    val documentId: String = "", // Renamed from 'id' to resolve conflict
+    val documentId: String = "",
     val userId: String = "",
-    val title: String = "",
-    val description: String = "",
+    val course: String = "", // Renamed from title
+    val score: String = "", // Renamed from description
     val createdAt: Long = 0L
 )

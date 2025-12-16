@@ -10,13 +10,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.example.cpsc411final.data.model.Item
 import com.example.cpsc411final.viewmodel.ItemsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,12 +27,27 @@ fun ListScreen(
     itemsViewModel: ItemsViewModel
 ) {
     val items by itemsViewModel.items.collectAsStateWithLifecycle()
+    var showDeleteDialog by remember { mutableStateOf<Item?>(null) }
+    var sortByScore by remember { mutableStateOf(false) }
+
+    val sortedItems = remember(items, sortByScore) {
+        if (sortByScore) {
+            // Sort by score ascending, treating non-numeric scores as high values
+            items.sortedBy { it.score.toIntOrNull() ?: Int.MAX_VALUE }
+        } else {
+            // Default sort: newest first
+            items.sortedByDescending { it.createdAt }
+        }
+    }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Items") },
+                title = { Text("Golf Rounds") },
                 actions = {
+                    IconButton(onClick = { sortByScore = !sortByScore }) {
+                        Icon(Icons.Default.Sort, contentDescription = "Sort by Score")
+                    }
                     IconButton(onClick = { navController.navigate("profile") }) {
                         Icon(Icons.Default.Person, contentDescription = "Profile")
                     }
@@ -40,34 +56,57 @@ fun ListScreen(
         },
         floatingActionButton = {
             FloatingActionButton(onClick = { navController.navigate("add_edit") }) {
-                Icon(Icons.Default.Add, contentDescription = "Add Item")
+                Icon(Icons.Default.Add, contentDescription = "Add Round")
             }
         }
     ) { padding ->
         Box(modifier = Modifier.padding(padding)) {
             if (items.isEmpty()) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text("No items yet. Tap the + button to add one.")
+                    Text("No rounds yet. Tap the + button to add one.")
                 }
             } else {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    items(items, key = { it.documentId }) { item ->
+                    items(sortedItems, key = { it.documentId }) { item ->
                         ListItem(
-                            headlineContent = { Text(item.title) },
-                            supportingContent = { Text(item.description) },
+                            headlineContent = { Text(item.course) },
+                            supportingContent = { Text("Score: ${item.score}") },
                             modifier = Modifier.clickable {
                                 navController.navigate("detail/${item.documentId}")
                             },
                             trailingContent = {
-                                IconButton(onClick = { itemsViewModel.deleteItem(item.documentId) }) {
+                                IconButton(onClick = { showDeleteDialog = item }) {
                                     Icon(Icons.Default.Delete, contentDescription = "Delete")
                                 }
                             }
                         )
                     }
                 }
+            }
+
+            showDeleteDialog?.let { itemToDelete ->
+                AlertDialog(
+                    onDismissRequest = { showDeleteDialog = null },
+                    title = { Text("Delete Round") },
+                    text = { Text("Are you sure you want to delete the round at '${itemToDelete.course}'?") },
+                    confirmButton = {
+                        Button(
+                            onClick = {
+                                itemsViewModel.deleteItem(itemToDelete.documentId)
+                                showDeleteDialog = null
+                            }
+                        ) {
+                            Text("Delete")
+                        }
+                    },
+                    dismissButton = {
+                        Button(onClick = { showDeleteDialog = null }) {
+                            Text("Cancel")
+                        }
+                    }
+                )
             }
         }
     }

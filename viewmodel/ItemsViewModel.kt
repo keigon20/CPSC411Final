@@ -38,22 +38,22 @@ class ItemsViewModel @Inject constructor(
         _selectedItem.value = item
     }
 
-    fun createItem(title: String, description: String) = viewModelScope.launch {
+    fun createItem(course: String, score: String) = viewModelScope.launch {
         val userId = authRepo.currentUser()?.uid ?: return@launch
         val newItem = Item(
             userId = userId,
-            title = title,
-            description = description,
+            course = course,
+            score = score,
             createdAt = System.currentTimeMillis()
         )
         firestore.createItem(newItem)
     }
 
-    fun updateSelectedItem(title: String, description: String) = viewModelScope.launch {
+    fun updateSelectedItem(course: String, score: String) = viewModelScope.launch {
         val currentItem = _selectedItem.value ?: return@launch
         val updates = mapOf(
-            "title" to title,
-            "description" to description
+            "course" to course,
+            "score" to score
         )
         firestore.updateItem(currentItem.documentId, updates)
     }

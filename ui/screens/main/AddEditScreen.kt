@@ -19,25 +19,22 @@ fun AddEditScreen(
     val items by itemsViewModel.items.collectAsStateWithLifecycle()
     val selectedItem by itemsViewModel.selectedItem.collectAsStateWithLifecycle()
 
-    var title by remember { mutableStateOf("") }
-    var description by remember { mutableStateOf("") }
+    var course by remember { mutableStateOf("") }
+    var score by remember { mutableStateOf("") }
 
     val isEditing = itemId != null
 
-    // This effect runs when the screen is first displayed or when itemId/items change.
-    // It finds the item to edit and populates the text fields.
     LaunchedEffect(itemId, items) {
         if (isEditing) {
             val item = items.find { it.documentId == itemId }
             if (item != null) {
                 itemsViewModel.selectItem(item)
-                title = item.title
-                description = item.description
+                course = item.course
+                score = item.score
             }
         }
     }
 
-    // This effect cleans up the ViewModel state when the user leaves the screen.
     DisposableEffect(Unit) {
         onDispose {
             itemsViewModel.clearSelectedItem()
@@ -47,7 +44,7 @@ fun AddEditScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(if (isEditing) "Edit Item" else "Add Item") }
+                title = { Text(if (isEditing) "Edit Round" else "Add Round") }
             )
         }
     ) { padding ->
@@ -58,34 +55,29 @@ fun AddEditScreen(
                 .padding(16.dp)
         ) {
             OutlinedTextField(
-                value = title,
-                onValueChange = { title = it },
-                label = { Text("Title") },
+                value = course,
+                onValueChange = { course = it },
+                label = { Text("Course") },
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(8.dp))
             OutlinedTextField(
-                value = description,
-                onValueChange = { description = it },
-                label = { Text("Description") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(120.dp)
+                value = score,
+                onValueChange = { score = it },
+                label = { Text("Score") },
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = {
                     if (isEditing) {
-                        // Call the correct update function from the ViewModel
-                        itemsViewModel.updateSelectedItem(title, description)
+                        itemsViewModel.updateSelectedItem(course, score)
                     } else {
-                        // Call the correct create function from the ViewModel
-                        itemsViewModel.createItem(title, description)
+                        itemsViewModel.createItem(course, score)
                     }
                     navController.popBackStack()
                 },
                 modifier = Modifier.fillMaxWidth(),
-                // Disable the button while the item data is loading
                 enabled = if (isEditing) selectedItem != null else true
             ) {
                 Text(if (isEditing) "Update" else "Add")
