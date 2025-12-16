@@ -32,7 +32,7 @@ Firebase Setup to run this project, you need to connect it to your own Firebase 
 - Use com.example.cpsc411final as the package name.
 - Follow the instructions to download the google-services.json file.
 3. Place google-services.json: Copy the google-services.json file you just downloaded and place it in the app/ directory of this Android Studio project.
-4.Enable Authentication:
+4. Enable Authentication:
 - In the Firebase Console, go to the Authentication section.
 - Click "Get Started".
 - Under the "Sign-in method" tab, enable the Email/Password provider.
