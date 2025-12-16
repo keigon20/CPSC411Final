@@ -25,7 +25,7 @@ Screens:
 - Details
 - Profile page
 
-Firebase SetupTo run this project, you need to connect it to your own Firebase project.
+Firebase Setup to run this project, you need to connect it to your own Firebase project.
 1. Create a Firebase Project: Go to the Firebase Console and create a new project.
 2. Add an Android App:
 - In your Firebase project dashboard, add a new Android app.
