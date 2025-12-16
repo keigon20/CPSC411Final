@@ -24,3 +24,20 @@ Screens:
 - Details
 - Profile page
 
+Firebase SetupTo run this project, you need to connect it to your own Firebase project.
+1. Create a Firebase Project: Go to the Firebase Console and create a new project.
+2. Add an Android App:
+- In your Firebase project dashboard, add a new Android app.
+- Use com.example.cpsc411final as the package name.
+- Follow the instructions to download the google-services.json file.
+3. Place google-services.json: Copy the google-services.json file you just downloaded and place it in the app/ directory of this Android Studio project.
+4.Enable Authentication:
+- In the Firebase Console, go to the Authentication section.
+- Click "Get Started".
+- Under the "Sign-in method" tab, enable the Email/Password provider.
+
+Local Setup
+1.Clone this repository.
+2.Open the project in Android Studio.
+3.Complete the Firebase Setup steps described above.
+4.Let Android Studio sync the Gradle files.5.Build and run the app on an emulator or a physical device.
