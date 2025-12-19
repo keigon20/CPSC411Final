@@ -53,20 +53,36 @@ Local Setup
 
 
 Screenshots:
+
 Login screen
+
 <img width="376" height="829" alt="Screenshot 2025-12-19 at 12 49 04 PM" src="https://github.com/user-attachments/assets/302fabea-f475-46f7-90da-8258f3bb8542" />
+
 Signup screen
+
 <img width="381" height="828" alt="Screenshot 2025-12-19 at 12 49 29 PM" src="https://github.com/user-attachments/assets/02b74ac6-5f3b-4b53-a1c4-e34f142b8e02" />
+
 List/home screen
+
 <img width="372" height="825" alt="Screenshot 2025-12-19 at 12 50 54 PM" src="https://github.com/user-attachments/assets/f4f9707d-82d5-4cdb-92d9-38872b18d8ae" />
+
 Add round
+
 <img width="375" height="831" alt="Screenshot 2025-12-19 at 12 50 25 PM" src="https://github.com/user-attachments/assets/b2270e69-27a6-4ca0-baa6-d0821fd58a93" />
+
 Round details
+
 <img width="377" height="824" alt="Screenshot 2025-12-19 at 12 51 18 PM" src="https://github.com/user-attachments/assets/63bebfc9-1f2b-490c-a792-9be76a5465de" />
+
 Edit details
+
 <img width="388" height="836" alt="Screenshot 2025-12-19 at 12 51 34 PM" src="https://github.com/user-attachments/assets/599b4a5d-a432-4111-bc55-172e748874ba" />
+
 Delete round
+
 <img width="370" height="823" alt="Screenshot 2025-12-19 at 12 51 51 PM" src="https://github.com/user-attachments/assets/6cefacdd-9b1a-4ae2-a87e-45f47c73d3e1" />
+
 Profile screen
+
 <img width="379" height="829" alt="Screenshot 2025-12-19 at 12 52 11 PM" src="https://github.com/user-attachments/assets/ca03d701-215a-4f51-8a01-fc7c80c791e3" />
 
