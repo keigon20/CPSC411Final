@@ -13,6 +13,7 @@ import com.example.cpsc411final.viewmodel.AuthViewModel
 import com.example.cpsc411final.viewmodel.ItemsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+// In MainActivity.kt
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,12 +23,16 @@ class MainActivity : ComponentActivity() {
             CPSC411FinalTheme {
                 val authViewModel: AuthViewModel = hiltViewModel()
                 val itemsViewModel: ItemsViewModel = hiltViewModel()
+                // ADD THIS LINE:
+                val courseViewModel: com.example.cpsc411final.viewmodel.CourseViewModel = hiltViewModel()
+
                 val isLoggedIn by authViewModel.isLoggedIn.collectAsStateWithLifecycle()
 
                 AppNavGraph(
                     isLoggedIn = isLoggedIn,
                     authViewModel = authViewModel,
-                    itemsViewModel = itemsViewModel
+                    itemsViewModel = itemsViewModel,
+                    courseViewModel = courseViewModel // PASS IT HERE
                 )
             }
         }
