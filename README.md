@@ -10,11 +10,17 @@ Features
 
 User Authentication: Sign up, log in, and log out using Firebase Authentication.
 
-CRUD Operations:
+CRUD Operations 1:
 - Create: Add new golf rounds with a course name and score.
 - Read: View a list of all past rounds and see the details of each one.
 - Update: Edit the course name and score of existing rounds.
 - Delete: Remove rounds from the list (with a confirmation dialog).
+
+CRUD Operations 2:
+- Create: Create a golf course.
+- Read: View a list of all the golf courses that you have added.
+- Update: Update the details of a golf course.
+- Delete: Remove a course from your list.
 
 Modern UI: Built entirely with Jetpack Compose, using Material 3 design components.
 
